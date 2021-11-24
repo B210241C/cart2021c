@@ -30,7 +30,7 @@
             </div>
             <div class="col-sm-4" style="text-align: center" >
                 <img src="{{ asset('images/vivoPhone.jpg')}}" width=50% alt="" class="img-fluid" > 
-                <p>VIVOasdj</p>
+                <p>VIVOasdjrt</p>
             </div>                
         </div>
             
