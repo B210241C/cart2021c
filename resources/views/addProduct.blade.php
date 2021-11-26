@@ -29,7 +29,11 @@
             </div>
             <div class="form-group">
             <label for="productCategory">Category</label>
-            <input class="form-control" type="text" id="productCategory" name="productCategory" required>
+            <select name="categoryID" id="categoryID" class="form-control">
+                @foreach($categoryID as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
             </div>
             <button type="submit" class="btn btn-primary">Add New</button>
         </form>
