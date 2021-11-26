@@ -11,7 +11,7 @@
             <input class="form-control" type="text" id="categoryName" name="categoryName" required>
             <button type="submit" class="btn btn-primary">Add New</button>
         </form>
-        <br><br>PP
+        <br><br>
     </div>
     <div class="col-sm-3"></div>
 </div>
