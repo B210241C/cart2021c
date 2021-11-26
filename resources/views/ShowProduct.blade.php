@@ -23,9 +23,9 @@
         			<td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->price}}</td>
-                    <td>{{$product->image}}</td>
+                    <td><img src="{{ asset('images/') }}/{{$product->image}}" alt="" width="50"></td>
                     <td>{{$product->quantity}}</td>
-                    <td>{{$product->CategoryID}}</td>
+                    <td>{{$product->catName}}</td>
         		</tr>
         		@endforeach
         	</tbody>

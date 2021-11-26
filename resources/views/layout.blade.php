@@ -11,6 +11,14 @@
     <title>Southern Online</title>
   </head>
   <body>
+   @if(Session::has('success'))
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading"></h4>
+        <p> {{Session::get('success')}}</p>
+        <p class="mb-0"></p>
+      </div>
+      </div>
+    @endif
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="{{asset('images/logo.png')}}" class="rounded-circle" alt="Southern Online" width="30">&nbsp;
   <a class="navbar-brand" href="#">Southern Online</a>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\Product;
 use App\Models\Category;
+use Session;
 
 class ProductController extends Controller
 {
@@ -19,12 +20,16 @@ class ProductController extends Controller
             'price'=>$r->productPrice,
             'description'=>$r->productDescription,
         ]);
-
+        Session::flash('success',"Product create sucessfully!!");
         return redirect()->route('viewProduct');
     }
 
     public function view(){
-        $viewProduct=Product::all();//generate SQL select*from category
+        $viewProduct=DB::table('products')
+        ->leftjoin('categories','categories.id','=','products.CategoryID') 
+        ->select('products.*','categories.name as catName')
+        ->get();  
         return view('showProduct')->with('products',$viewProduct);
+
     }
 }
