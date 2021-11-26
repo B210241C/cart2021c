@@ -4,11 +4,11 @@
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
         <br><br>
-        <h3>Add New Category</h3>
-        <form action="" method="POST">
+        <h3>Add New Product</h3>
+        <form action="{{route('addProduct')}}" method="POST">
             @CSRF
             <div class="form-group">
-            <label for="productName">Add New Category</label>
+            <label for="productName">Name</label>
             <input class="form-control" type="text" id="productName" name="productName" required>
             </div>
             <div class="form-group">
