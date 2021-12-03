@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Product;
-use App\Models\Category;
 use Session;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -36,4 +36,34 @@ class ProductController extends Controller
         return view('showProduct')->with('products',$viewProduct);
 
     }
+
+    public function edit($id){
+        $products=Product::all()->where('id',$id);
+        return view('editProduct')->with('products',$products)
+                                  ->with('categories',Category::all());
+
+    }
+
+    public function update(){
+        $r=request();
+        $products =Product::find($r->id); 
+        if($r->file('productImage')!=''){
+            $image=$r->file('productImage');
+            $image->move('images',$image->getClientOriginalName());
+            $imageName=$image->getClientOriginalName();
+            $products->image=$imageName;
+        }
+
+        $products->categoryID = $r->categoryID;
+        $products->name=$r->productName;
+        $products->quantity=$r->productQuantity;
+        $products->price=$r->productPrice;
+        $products->description=$r->productDescription;
+        $products->save();
+
+        Session::flash('success', "Product update successfully!");
+        return redirect()->route('viewProduct');
+    }
+
+
 }

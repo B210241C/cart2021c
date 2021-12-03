@@ -26,6 +26,8 @@
                     <td><img src="{{ asset('images/') }}/{{$product->image}}" alt="" width="100" class="img-fluid"></td>
                     <td>{{$product->quantity}}</td>
                     <td>{{$product->catName}}</td>
+                    <td><a href="{{route('editProduct',['id'=>$product->id])}}"
+                     class="btn btn-warning btn-xs">Edit</a></td>
         		</tr>
         		@endforeach
         	</tbody>

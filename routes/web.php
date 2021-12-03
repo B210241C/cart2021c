@@ -41,6 +41,12 @@ Route::get('/viewCategory',[App\Http\Controllers\CategoryController::class, 'vie
 Route::get('/viewProduct',[App\Http\Controllers\ProductController::class, 'view'])
 ->name('viewProduct');
 
+Route::get('/editProduct/{id}',[App\Http\Controllers\ProductController::class, 'edit'])
+->name('editProduct');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/updateProduct',[App\Http\Controllers\ProductController::class, 'update'])
+->name('updateProduct');
