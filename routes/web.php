@@ -44,9 +44,18 @@ Route::get('/viewProduct',[App\Http\Controllers\ProductController::class, 'view'
 Route::get('/editProduct/{id}',[App\Http\Controllers\ProductController::class, 'edit'])
 ->name('editProduct');
 
+Route::get('/deleteProduct/{id}',[App\Http\Controllers\ProductController::class, 'delete'])
+->name('deleteProduct');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/updateProduct',[App\Http\Controllers\ProductController::class, 'update'])
 ->name('updateProduct');
+
+Route::get('/productDetail/{id}',[App\Http\Controllers\ProductController::class,'productdetail'])->name('productdetail');
+
+Route::get('/allProduct',[App\Http\Controllers\ProductController::class, 'allProduct'])
+->name('allProduct');
+ 
