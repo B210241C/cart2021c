@@ -59,3 +59,6 @@ Route::get('/productDetail/{id}',[App\Http\Controllers\ProductController::class,
 Route::get('/allProduct',[App\Http\Controllers\ProductController::class, 'allProduct'])
 ->name('allProduct');
  
+Route::post('addCart',[App\Http\Controllers\CartController::class,'add'])->name('add.to.cart');
+
+Route::get('/myCart',[App\Http\Controllers\CartController::class, 'view'])->name('myCart');
