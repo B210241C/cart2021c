@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Stripe;
 use Illuminate\Http\Request;
+use DB;
+use Auth;
+use App\Models\myOrder;
+use App\Models\myCart;
+use Session;
 
 class PaymentController extends Controller
 {
@@ -19,6 +24,22 @@ class PaymentController extends Controller
                 "source" => $request->stripeToken,
                 "description" => "This payment is testing purpose of southern online",
         ]);
+
+        $newOrder=myorder::Create([
+            'paymentStatus'=>'Done',
+            'userID'=>Auth::id(),
+            'amount'=>$request->sub,
+        ]);
+
+        $orderID=DB::table('my_orders')->where('userID','=',Auth::id())->orderBy
+        ('created_at','desc')->first();
+
+        $items=$request->input('cid');
+        foreach($items as $item=>$value){
+            $carts=myCart::find($value);
+            $carts->orderID=$orderID->id;
+            $carts->save();
+        }
            
         return back();
     }
