@@ -62,3 +62,5 @@ Route::get('/allProduct',[App\Http\Controllers\ProductController::class, 'allPro
 Route::post('addCart',[App\Http\Controllers\CartController::class,'add'])->name('add.to.cart');
 
 Route::get('/myCart',[App\Http\Controllers\CartController::class, 'view'])->name('myCart');
+
+Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
