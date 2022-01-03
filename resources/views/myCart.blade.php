@@ -55,7 +55,11 @@
         	</tbody>
         </table>
     </div>
-    <div class="col-sm-3"></div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        {{$products->links('pagination::bootstrap-4')}}
+    </div>
+    
 </div>
 
 

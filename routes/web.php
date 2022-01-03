@@ -64,3 +64,5 @@ Route::post('addCart',[App\Http\Controllers\CartController::class,'add'])->name(
 Route::get('/myCart',[App\Http\Controllers\CartController::class, 'view'])->name('myCart');
 
 Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
+
+Route::post('/products',[App\Http\Controllers\ProductController::class, 'searchProduct'] ) ->name('search.products');

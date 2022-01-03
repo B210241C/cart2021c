@@ -82,4 +82,11 @@ class ProductController extends Controller
         $products=Product::paginate(8);
         return view('allProduct',compact('products'));
     }
+
+    public function searchProduct(){
+        $r=request();
+        $keyword=$r->keyword;
+        $products=DB::table('products')->where('name','like','%'.$keyword.'%')->paginate(5);
+        return view('allProduct')->with('products',$products);
+    }
 }

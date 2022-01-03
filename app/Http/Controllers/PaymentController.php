@@ -9,6 +9,7 @@ use Auth;
 use App\Models\myOrder;
 use App\Models\myCart;
 use Session;
+use Notification;
 
 class PaymentController extends Controller
 {
@@ -40,6 +41,9 @@ class PaymentController extends Controller
             $carts->orderID=$orderID->id;
             $carts->save();
         }
+
+        $email="B210241C@sc.edu.my";
+        Notification::route('mail',$email)->notify(new \App\Notifications\orderPaid($email)); 
            
         return back();
     }
