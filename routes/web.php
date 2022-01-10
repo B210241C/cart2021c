@@ -66,3 +66,8 @@ Route::get('/myCart',[App\Http\Controllers\CartController::class, 'view'])->name
 Route::post('/checkout', [App\Http\Controllers\PaymentController::class, 'paymentPost'])->name('payment.post');
 
 Route::post('/products',[App\Http\Controllers\ProductController::class, 'searchProduct'] ) ->name('search.products');
+
+Route::get('/pdfReport',[App\Http\Controllers\OrderController::class,'pdfReport'])->name('pdfReport');
+
+Route::get('/myOrder',[App\Http\Controllers\OrderController::class, 'view'])->name('myOrder');
+
