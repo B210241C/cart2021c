@@ -11,7 +11,8 @@
     <title>Southern Online</title>
   </head>
   <body>
-   @if(Session::has('success'))
+
+    @if(Session::has('success'))
       <div class="alert alert-success" role="alert">
         <h4 class="alert-heading"></h4>
         <p> {{Session::get('success')}}</p>
@@ -19,9 +20,10 @@
       </div>
       </div>
     @endif
+
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <img src="{{asset('images/logo.png')}}" class="rounded-circle" alt="Southern Online" width="30">&nbsp;
-  <a class="navbar-brand" href="#">Southern Online</a>
+  <a class="navbar-brand" href="/">Southern Online</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,7 +31,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Products</a>
@@ -51,9 +53,21 @@
       <input class="form-control mr-sm-2" name="keyword" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>&nbsp;
-    <button type="button" class="btn btn-success">
-      My Cart <span class="badge bg-danger">1</span>
-    </button>
+    
+    @guest
+          <button type="button" class="btn btn-success">
+          My Cart <span class="badge bg-danger"></span>
+        </button>
+    @else
+          <button type="button" class="btn btn-success">
+            My Cart <span class="badge bg-danger">
+              {{Session()->get('cartItem')}}
+            </span>
+          </button>
+
+
+    @endguest
+    
   </div>
 </nav>
 

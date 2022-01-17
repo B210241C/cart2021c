@@ -34,7 +34,19 @@ class CartController extends Controller
         // ->get();
         ->paginate(5);
         //select my_carts.quantity as cartQty,my_carts.id as cid, products.* from my_carts left join products on products.id=my_carts.productID where my_cart.orderID='' and my_carts.userID='Auth::id()'    
+        $this->cartItem();
         Return view('myCart')->with('products',$carts);
+    }
+    public function cartItem(){
+        $noItem=DB::table('my_carts')
+        ->leftjoin('products','products.id','=','my_carts.productID')
+        ->select(DB::raw('COUNT(*) as count_item'))
+        ->where('my_carts.orderID','=','') 
+        ->where('my_carts.userID','=',Auth::id())
+        ->groupBy('my_carts.userID')
+        ->first();
+        $cartItem=$noItem->count_item;
+        Session()->put('cartItem',$cartItem);
     }
 }
 

@@ -89,4 +89,10 @@ class ProductController extends Controller
         $products=DB::table('products')->where('name','like','%'.$keyword.'%')->paginate(5);
         return view('allProduct')->with('products',$products);
     }
+
+    public function viewProduct(){
+        (new CartController)->cartItem();
+        $products=Product::all();
+        return view('viewProducts')->with('products',$product);
+    }
 }
